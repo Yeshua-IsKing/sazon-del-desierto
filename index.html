@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sazón del Desierto — A Guide to Sonora &amp; Baja California Cooking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#EFDDC2;        /* sun-bleached sand (page) */
+    --sand-deep:#E5CFA9;
+    --cream:#FBF4E7;       /* card */
+    --cream-2:#FDF9F0;
+    --clay:#C25A2C;        /* terracotta */
+    --clay-deep:#A4461E;
+    --chile:#A52218;       /* oro rojo — primary accent */
+    --chile-bright:#C8331E;
+    --gold:#E0A03C;        /* sun gold */
+    --gold-soft:#EFC06A;
+    --sun:#E5832A;         /* sunset orange */
+    --nopal:#5E6B3B;       /* cactus / olive */
+    --nopal-deep:#46522B;
+    --ink:#2A1A10;         /* warm near-black */
+    --ink-soft:#5C4536;
+    --line:#D8C19C;        /* warm border */
+    --line-soft:#E6D4B4;
+    --maxw:1180px;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --sh-sm:0 2px 8px rgba(74,40,18,.08);
+    --sh-md:0 12px 34px -12px rgba(94,46,18,.30);
+    --sh-lg:0 30px 70px -28px rgba(94,40,14,.45);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--sand);
+    color:var(--ink-soft);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(120% 80% at 85% -10%, rgba(224,160,60,.28), transparent 55%),
+      radial-gradient(90% 60% at 5% 110%, rgba(94,107,59,.12), transparent 60%);
+    background-attachment:fixed;
+  }
+  ::selection{background:var(--chile);color:var(--cream-2)}
+  img,svg{display:block}
+  a{color:inherit;text-decoration:none}
+
+  /* grain overlay */
+  .grain{
+    position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  h1,h2,h3,h4{font-family:var(--serif);color:var(--ink);font-weight:600;line-height:1.04;letter-spacing:-.01em}
+  .eyebrow{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    color:var(--clay-deep);font-size:1.05rem;letter-spacing:.02em;
+    display:inline-flex;align-items:center;gap:.6em;margin-bottom:.4em;
+  }
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--clay);display:inline-block;border-radius:2px}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:100;
+    backdrop-filter:saturate(1.4) blur(10px);
+    background:rgba(239,221,194,.82);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 28px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:700;color:var(--ink);font-size:1.18rem;letter-spacing:-.01em}
+  .brand .mark{width:30px;height:30px;flex:0 0 auto;color:var(--chile)}
+  .brand .mark svg{width:100%;height:100%;animation:spin 50s linear infinite}
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-links a{
+    font-size:.82rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;
+    color:var(--ink-soft);padding:9px 14px;border-radius:999px;transition:.25s;
+  }
+  .nav-links a:hover{color:var(--chile);background:rgba(165,34,24,.07)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:96px 0 0;
+    background:linear-gradient(180deg,#F3DDB6 0%, #EFD8AE 30%, var(--sand) 100%);}
+  .sun{position:absolute;top:-110px;right:-90px;width:460px;height:460px;pointer-events:none}
+  .sun .core{position:absolute;inset:28%;border-radius:50%;
+    background:radial-gradient(circle at 40% 35%, var(--gold-soft), var(--sun) 70%, var(--clay) 100%);
+    box-shadow:0 0 80px 10px rgba(229,131,42,.45);}
+  .sun .rays{position:absolute;inset:0;border-radius:50%;opacity:.55;
+    background:repeating-conic-gradient(from 0deg, rgba(224,160,60,.9) 0 3.2deg, transparent 3.2deg 11deg);
+    -webkit-mask:radial-gradient(circle, transparent 30%, #000 31%);
+    mask:radial-gradient(circle, transparent 30%, #000 31%);
+    animation:spin 70s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:end;padding-bottom:30px}
+  .hero h1{font-size:clamp(3.2rem,9vw,6.6rem);font-weight:900;letter-spacing:-.03em;color:var(--chile);text-shadow:0 1px 0 rgba(255,255,255,.25)}
+  .hero h1 em{font-style:italic;font-weight:600;color:var(--ink);display:block}
+  .hero .lead{font-size:1.16rem;max-width:34ch;margin-top:22px;color:var(--ink-soft)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--cream);border:1px solid var(--line);color:var(--clay-deep);padding:8px 14px;border-radius:999px;box-shadow:var(--sh-sm)}
+  .chip svg{width:14px;height:14px;color:var(--chile)}
+
+  .hero-card{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--sh-md);position:relative}
+  .hero-card h3{font-size:1.05rem;color:var(--clay-deep);font-style:italic;font-weight:600;margin-bottom:14px}
+  .mini-row{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .mini-row:last-child{border-bottom:0}
+  .mini-row b{font-family:var(--serif);color:var(--ink);font-weight:600}
+  .mini-row span{font-size:.92rem;text-align:right}
+
+  /* sierra divider */
+  .sierra{position:relative;z-index:2;line-height:0;margin-top:6px}
+  .sierra svg{width:100%;height:auto;display:block}
+
+  /* hero entrance */
+  .fade-up{opacity:0;transform:translateY(22px);animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.32s}.d4{animation-delay:.46s}.d5{animation-delay:.6s}
+  @keyframes fadeUp{to{opacity:1;transform:none}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:62ch;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(2.1rem,5vw,3.3rem);margin:.1em 0 .35em}
+  .sec-head p{font-size:1.08rem}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* seasoning cards */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .card{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--sh-sm);transition:transform .35s,box-shadow .35s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
+  .card .tag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:16px}
+  .tag.sonora{background:rgba(165,34,24,.10);color:var(--chile)}
+  .tag.baja{background:rgba(94,107,59,.14);color:var(--nopal-deep)}
+  .card h3{font-size:1.7rem;margin-bottom:6px}
+  .card .sub{font-style:italic;font-family:var(--serif);color:var(--clay-deep);margin-bottom:18px;font-size:1.02rem}
+  .card h4{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep);font-family:var(--sans);font-weight:800;margin:20px 0 10px}
+  .pantry{display:flex;flex-wrap:wrap;gap:8px}
+  .pantry li{list-style:none;font-size:.9rem;font-weight:600;background:var(--sand);border:1px solid var(--line-soft);color:var(--ink);padding:6px 12px;border-radius:8px}
+  .note-line{font-size:.97rem;margin-top:14px;padding-left:16px;border-left:3px solid var(--gold);color:var(--ink-soft)}
+  .note-line b{color:var(--ink);font-family:var(--serif);font-weight:600}
+  .corner-sun{position:absolute;right:-40px;top:-40px;width:130px;height:130px;opacity:.07;color:var(--clay)}
+
+  /* comparison table */
+  .table-wrap{margin-top:34px;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh-sm);background:var(--cream)}
+  table{width:100%;border-collapse:collapse;font-size:.96rem}
+  caption{caption-side:top;text-align:left;padding:18px 22px 0;font-family:var(--serif);font-style:italic;color:var(--clay-deep)}
+  th,td{padding:14px 18px;text-align:left;vertical-align:top}
+  thead th{background:var(--clay);color:var(--cream-2);font-family:var(--serif);font-weight:600;font-size:1rem}
+  thead th:first-child{background:var(--clay-deep)}
+  tbody tr:nth-child(odd){background:var(--cream-2)}
+  tbody tr:nth-child(even){background:#F6ECD9}
+  tbody th{font-family:var(--serif);color:var(--ink);font-weight:600;width:22%}
+  td b{color:var(--chile)}
+  .cmp-son{color:var(--chile);font-weight:700}
+  .cmp-baj{color:var(--nopal-deep);font-weight:700}
+
+  /* salsas */
+  #salsas{background:linear-gradient(180deg, transparent, rgba(196,90,44,.05) 40%, transparent);}
+  .salsa-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .salsa{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--sh-sm);transition:transform .35s,box-shadow .35s}
+  .salsa:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
+  .salsa-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px}
+  .salsa h3{font-size:1.55rem}
+  .salsa .yield{font-size:.82rem;font-weight:700;color:var(--clay-deep);white-space:nowrap;margin-top:8px}
+  .salsa .desc{font-style:italic;font-family:var(--serif);color:var(--clay-deep);margin:4px 0 16px}
+  .ing{list-style:none;display:flex;flex-direction:column;gap:7px;margin:8px 0 16px}
+  .ing li{position:relative;padding-left:20px;font-size:.95rem}
+  .ing li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--clay)}
+  .steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:11px}
+  .steps li{position:relative;padding-left:36px;font-size:.95rem;counter-increment:s}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:24px;height:24px;border-radius:50%;
+    background:var(--chile);color:var(--cream-2);font-family:var(--serif);font-weight:700;font-size:.85rem;
+    display:flex;align-items:center;justify-content:center}
+  .callout{margin-top:16px;background:rgba(224,160,60,.13);border:1px solid var(--gold-soft);border-radius:12px;padding:13px 16px;font-size:.9rem}
+  .callout b{font-family:var(--serif);color:var(--clay-deep)}
+
+  .variations{margin-top:26px;display:flex;flex-wrap:wrap;gap:16px}
+  .var{flex:1 1 240px;background:var(--sand);border:1px dashed var(--clay);border-radius:14px;padding:16px 18px}
+  .var b{font-family:var(--serif);color:var(--ink);display:block;margin-bottom:3px;font-size:1.02rem}
+  .var span{font-size:.9rem}
+
+  /* heat meter */
+  .heat{display:inline-flex;align-items:center;gap:3px}
+  .heat .chl{width:15px;height:15px;color:var(--chile)}
+  .heat .chl.off{color:var(--ink);opacity:.18}
+  .heat-num{font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-left:6px}
+
+  /* ---------- RECIPES ---------- */
+  #recetas{background:
+    radial-gradient(80% 50% at 100% 0%, rgba(224,160,60,.12), transparent 60%),
+    var(--sand);}
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+  .r-tab{
+    font-family:var(--serif);font-size:1.02rem;font-weight:600;color:var(--ink);cursor:pointer;
+    background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:11px 20px;transition:.25s;
+    display:inline-flex;align-items:center;gap:9px;box-shadow:var(--sh-sm)}
+  .r-tab .n{font-family:var(--sans);font-weight:800;font-size:.72rem;background:var(--sand);color:var(--clay-deep);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.25s}
+  .r-tab:hover{border-color:var(--clay);color:var(--chile)}
+  .r-tab.active{background:var(--chile);color:var(--cream-2);border-color:var(--chile);box-shadow:var(--sh-md)}
+  .r-tab.active .n{background:rgba(255,255,255,.22);color:var(--cream-2)}
+
+  .recipe-panel{display:none}
+  .recipe-panel.active{display:block;animation:rfade .5s ease}
+  @keyframes rfade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .recipe{background:var(--cream);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--sh-md)}
+  .recipe-hd{padding:34px 38px;background:linear-gradient(120deg, rgba(196,90,44,.10), rgba(224,160,60,.08));border-bottom:1px solid var(--line)}
+  .recipe-hd .rk{font-family:var(--serif);font-style:italic;color:var(--clay-deep);font-size:1rem}
+  .recipe-hd h3{font-size:clamp(1.9rem,4vw,2.7rem);margin:.1em 0 .25em}
+  .recipe-hd p{font-size:1.02rem;max-width:65ch}
+  .meta{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:20px;align-items:center}
+  .meta .m{display:flex;flex-direction:column;gap:3px}
+  .meta .m .lbl{font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--clay-deep)}
+  .meta .m .val{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:1.02rem}
+  .allerg{display:flex;gap:6px;flex-wrap:wrap}
+  .allerg span{font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--sand);border:1px solid var(--line);color:var(--ink-soft);padding:4px 9px;border-radius:7px}
+
+  .recipe-body{display:grid;grid-template-columns:.82fr 1.18fr;gap:0}
+  .col-ing{padding:32px 34px;background:var(--cream-2);border-right:1px solid var(--line)}
+  .col-steps{padding:32px 38px}
+  .col-ing h4,.col-steps h4{font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:var(--clay-deep);font-family:var(--sans);font-weight:800;margin-bottom:16px}
+  .col-ing h4:not(:first-child){margin-top:24px}
+  .recipe-note{margin:0 38px 32px;background:rgba(94,107,59,.10);border:1px solid rgba(94,107,59,.3);border-radius:14px;padding:16px 18px;font-size:.94rem}
+  .recipe-note b{font-family:var(--serif);color:var(--nopal-deep)}
+
+  /* ---------- NOTES ---------- */
+  #notas{background:var(--ink);color:#E7D4BC;padding-bottom:0}
+  #notas h2{color:var(--cream-2)}
+  #notas .eyebrow{color:var(--gold-soft)}
+  #notas .eyebrow::before{background:var(--gold)}
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  .nbox{background:rgba(255,255,255,.04);border:1px solid rgba(231,212,188,.16);border-radius:18px;padding:26px}
+  .nbox h4{color:var(--gold-soft);font-size:1.2rem;margin-bottom:12px}
+  .nbox ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .nbox li{position:relative;padding-left:22px;font-size:.95rem;color:#E7D4BC}
+  .nbox li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:2px;transform:rotate(45deg);background:var(--gold)}
+  .nbox li b{color:var(--cream-2)}
+  .about{font-size:.92rem;color:#C9B69B;line-height:1.7}
+
+  footer{margin-top:64px;border-top:1px solid rgba(231,212,188,.16);padding:30px 0;text-align:center}
+  footer .f-mark{width:34px;height:34px;color:var(--gold);margin:0 auto 12px}
+  footer .f-mark svg{animation:spin 60s linear infinite}
+  footer p{font-size:.86rem;color:#B9A687}
+  footer .tag-line{font-family:var(--serif);font-style:italic;color:var(--gold-soft);font-size:1.05rem;margin-bottom:6px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .two,.salsa-grid,.notes-grid,.recipe-body{grid-template-columns:1fr}
+    .col-ing{border-right:0;border-bottom:1px solid var(--line)}
+    .sun{width:320px;height:320px;top:-80px;right:-70px}
+  }
+  @media(max-width:680px){
+    .nav-links{display:none}
+    .wrap{padding:0 20px}
+    .nav-inner{padding:12px 20px}
+    section{padding:62px 0}
+    .recipe-hd,.col-ing,.col-steps{padding:26px 22px}
+    .recipe-note{margin:0 22px 26px}
+    .hero{padding-top:64px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .fade-up,.reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- icon defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.4" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+      <path d="M12 1.6v3"/><path d="M12 19.4v3"/><path d="M1.6 12h3"/><path d="M19.4 12h3"/>
+      <path d="M4.6 4.6l2.1 2.1"/><path d="M17.3 17.3l2.1 2.1"/><path d="M19.4 4.6l-2.1 2.1"/><path d="M6.7 17.3l-2.1 2.1"/>
+    </g>
+  </symbol>
+  <symbol id="ic-chile" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M15.8 2.5c.1 1.1.9 1.9 2 2.1.5.1.7.7.4 1.1-.5.7-1.3 1-2.1.9.9 1 1.4 2.3 1.4 3.7 0 4.7-3.8 8.6-8.5 9-1.6.1-2.9-.5-3.4-1.6-.3-.7.2-1.5 1-1.6 3.9-.4 6.9-3.4 7-7.1 0-.7-.1-1.3-.4-1.9-1.1 2.7-3.7 4.5-6.7 4.5-.8 0-1.3-.8-.9-1.5.2-.4.6-.6 1-.6 2.8-.1 5-2.3 5.2-5.1.1-1.7 1.4-3 3.1-3.1.4 0 .8.3.8.7z"/>
+  </symbol>
+  <symbol id="ic-leaf" viewBox="0 0 24 24"><path fill="currentColor" d="M5 19c-.6-7 3-13 14-14 .5 6.5-2.5 13.5-11 13.8.8-3 2.8-5.3 5.7-6.4-3.4.6-6 2.5-7.4 5.6-.4.9-1 1-1.3 0z"/></symbol>
+  <symbol id="ic-flame" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c1 3-1 4.5-2.4 6.3C8 10.4 7 12 7.4 14c.3 1.6 1.6 2.6 2.6 2.2-.7-1-.8-2.2 0-3.3.7 1.6 2 2 2.6 3.6.5 1.3-.1 2.7-1.2 3.3 3-.3 5-2.9 5-5.9 0-4.5-4-5.8-4-9.2 0-1-.4-2-2-2.6 0 0 1 2-.5 3.6C10.8 4.4 12.3 3.4 12 2z"/></symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio">
+      <span class="mark"><svg viewBox="0 0 24 24"><use href="#ic-sun"/></svg></span>
+      Sazón del Desierto
+    </a>
+    <nav class="nav-links">
+      <a href="#sazones">Seasonings</a>
+      <a href="#salsas">Salsas</a>
+      <a href="#recetas">Recipes</a>
+      <a href="#notas">Notes</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="sun" aria-hidden="true"><div class="rays"></div><div class="core"></div></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow fade-up d1">Cooking of Northwest Mexico</span>
+        <h1 class="fade-up d2">Sazón del<em>Desierto</em></h1>
+        <p class="lead fade-up d3">A field guide to the seasonings, salsas, and signature dishes of <strong>Sonora</strong> &amp; <strong>Baja California</strong> — where mesquite smoke, wild chiltepín, and sun-bleached simplicity define the table.</p>
+        <div class="chips fade-up d4">
+          <span class="chip"><svg><use href="#ic-sun"/></svg>Seasoning profiles</span>
+          <span class="chip"><svg><use href="#ic-chile"/></svg>The salsas</span>
+          <span class="chip"><svg><use href="#ic-flame"/></svg>5 signature recipes</span>
+        </div>
+      </div>
+      <aside class="hero-card fade-up d5" aria-label="At a glance">
+        <h3>The two traditions, in a breath</h3>
+        <div class="mini-row"><b>Sonora</b><span>Austere &amp; meat-forward · mesquite · chiltepín</span></div>
+        <div class="mini-row"><b>Baja California</b><span>Coastal &amp; layered · lime · olive oil · fusion</span></div>
+        <div class="mini-row"><b>Shared backbone</b><span>Flour tortillas, garlic, oregano, the open flame</span></div>
+        <div class="mini-row"><b>Red gold</b><span>Chiltepín — Sonora's wild signature chile</span></div>
+      </aside>
+    </div>
+  </div>
+  <div class="sierra" aria-hidden="true">
+    <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+      <path fill="#D77A3D" opacity="0.55" d="M0,150 L0,96 L150,60 L300,104 L470,52 L640,100 L820,44 L1010,98 L1200,58 L1440,104 L1440,150 Z"/>
+      <path fill="#C25A2C" d="M0,150 L0,120 L120,96 L250,128 L300,100 L330,128 L520,84 L700,126 L760,92 L800,126 L980,86 L1180,128 L1280,104 L1440,130 L1440,150 Z"/>
+      <!-- saguaros -->
+      <g fill="#A4461E">
+        <path d="M392,128 q0,-26 8,-26 q8,0 8,26 v-10 q0,-10 8,-10 q5,0 5,10 v6 h-5 v-4 q0,-4 -3,-4 v16 h-13 v-22 q0,-8 -3,-8 q-3,0 -3,8 v18 h-5 v0 z"/>
+        <path d="M1096,130 q0,-22 7,-22 q7,0 7,22 v-8 q0,-9 7,-9 q4,0 4,9 v5 h-4 v-3 q0,-3 -3,-3 v15 h-11 v-19 q0,-7 -2,-7 q-2,0 -2,7 v16 h-4 z"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- SEASONINGS -->
+<section id="sazones">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Los Sazones</span>
+      <h2>The seasoning DNA of two regions</h2>
+      <p>These neighboring traditions sit at opposite ends of the spice spectrum. Knowing the difference keeps any blend — or any plate — true to where it comes from.</p>
+    </div>
+
+    <div class="two">
+      <article class="card reveal">
+        <div class="corner-sun"><svg viewBox="0 0 24 24" width="130" height="130"><use href="#ic-sun"/></svg></div>
+        <span class="tag sonora">Sonora</span>
+        <h3>Austere, meat-forward</h3>
+        <p class="sub">"Good beef needs very little dressing up."</p>
+        <p>The hot, dry, historically isolated north pushed cooks toward simplicity. The vast majority of dishes lean on only a small handful of seasonings — and let quality and fire do the rest.</p>
+        <h4>Core pantry</h4>
+        <ul class="pantry">
+          <li>Sea / kosher salt</li><li>Black pepper</li><li>Garlic</li><li>Onion</li>
+          <li>Cumin</li><li>Mexican oregano</li><li>Bay leaf</li><li>Cilantro &amp; coriander seed</li><li>Chile colorado</li>
+        </ul>
+        <p class="note-line"><b>Chiltepín</b> — the tiny wild chile called <em>el oro rojo</em> (red gold), ~100,000–200,000 SHU. Crushed into menudo, pozole &amp; gallina pinta, and the base of countless table salsas.</p>
+        <p class="note-line"><b>Mesquite smoke</b> is itself a seasoning — carne asada is grilled over mesquite coals for exactly that aroma.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="corner-sun" style="color:var(--nopal)"><svg viewBox="0 0 24 24" width="130" height="130"><use href="#ic-leaf"/></svg></div>
+        <span class="tag baja">Baja California</span>
+        <h3>Coastal, layered, fusion</h3>
+        <p class="sub">Mexican roots, Mediterranean &amp; Asian layers.</p>
+        <p>Seafood-forward and cosmopolitan, especially in the north — Tijuana, Ensenada, Mexicali and the Valle de Guadalupe — where the modern <strong>Baja Med</strong> movement braids three culinary worlds together.</p>
+        <h4>Shared Mexican base</h4>
+        <ul class="pantry">
+          <li>Lime</li><li>Cilantro</li><li>Garlic &amp; onion</li><li>Oregano (incl. wild)</li>
+          <li>Cumin</li><li>Epazote</li><li>Serrano · chile de árbol</li>
+        </ul>
+        <h4>The fusion layers</h4>
+        <ul class="pantry">
+          <li>Olive oil &amp; olives</li><li>Rosemary · thyme · basil</li><li>Wine</li><li>Soy &amp; ginger</li><li>Lemongrass</li>
+        </ul>
+        <p class="note-line"><b>Damiana</b> — a wild native herb of Baja California Sur, used as a seasoning and famous as the base of a local sweet liqueur.</p>
+      </article>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <caption>Seasoning at a glance</caption>
+        <thead>
+          <tr><th scope="col">&nbsp;</th><th scope="col">Sonora</th><th scope="col">Baja California</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Philosophy</th><td class="cmp-son">Austere, meat-forward</td><td class="cmp-baj">Layered, seafood-forward, fusion</td></tr>
+          <tr><th scope="row">Signature heat</th><td class="cmp-son">Chiltepín (wild)</td><td class="cmp-baj">Serrano, chile de árbol</td></tr>
+          <tr><th scope="row">Core herbs</th><td class="cmp-son">Oregano, bay, cilantro / coriander</td><td class="cmp-baj">Oregano, cilantro, damiana, Mediterranean herbs</td></tr>
+          <tr><th scope="row">Defining technique</th><td class="cmp-son">Mesquite grilling</td><td class="cmp-baj">Lime-curing, olive-oil cooking, wok</td></tr>
+          <tr><th scope="row">Signature pantry</th><td class="cmp-son">Salt, pepper, garlic, cumin, chile colorado</td><td class="cmp-baj">Lime, olive oil, white pepper, soy, lemongrass</td></tr>
+          <tr><th scope="row">Staple bread</th><td class="cmp-son">Flour tortilla (sobaquera)</td><td class="cmp-baj">Flour tortilla + artisan breads</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SALSAS -->
+<section id="salsas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Las Salsas</span>
+      <h2>What lives on the Sonoran table</h2>
+      <p>Two essentials carry most plates — the fiery wild-chile salsa and the smoky roasted salsa built for carne asada — plus the everyday shortcuts.</p>
+    </div>
+
+    <div class="salsa-grid">
+      <article class="salsa reveal">
+        <div class="salsa-top">
+          <div>
+            <h3>Salsa de Chiltepín</h3>
+            <p class="heat" data-level="5" data-label="Fiery"></p>
+          </div>
+          <span class="yield">Makes ~1½ cups</span>
+        </div>
+        <p class="desc">The essential Sonoran salsa.</p>
+        <h4 style="font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep);font-weight:800;margin:6px 0 8px">Ingredients</h4>
+        <ul class="ing">
+          <li>2 ripe tomatoes (roma or bola)</li>
+          <li>3 garlic cloves</li>
+          <li>½–1 tsp dried chiltepín (≈7–10 chiles), lightly toasted</li>
+          <li>1 tsp apple-cider or white vinegar</li>
+          <li>¼ tsp Mexican oregano (optional)</li>
+          <li>Salt to taste</li>
+        </ul>
+        <h4 style="font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep);font-weight:800;margin:6px 0 10px">Method</h4>
+        <ol class="steps">
+          <li>Roast tomatoes (and garlic) on a dry comal until the skins blister; peel.</li>
+          <li>Toast the chiltepines briefly — <strong>never handle them with bare hands</strong>; use a spoon or towel.</li>
+          <li>Blend everything ~2 minutes until smooth, or grind by hand in a molcajete with ¼ onion for a coarser salsa.</li>
+        </ol>
+        <div class="callout"><b>Heat note:</b> chiltepín is intensely hot — add a few, taste, build up. Keeps refrigerated 1–2 weeks. Tip: keep a <em>chiltepinero</em>, a mortar used only for grinding chiltepín.</div>
+      </article>
+
+      <article class="salsa reveal">
+        <div class="salsa-top">
+          <div>
+            <h3>Salsa Asada</h3>
+            <p class="heat" data-level="3" data-label="Medium"></p>
+          </div>
+          <span class="yield">Makes ~1½ cups</span>
+        </div>
+        <p class="desc">The roasted carne-asada companion.</p>
+        <h4 style="font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep);font-weight:800;margin:6px 0 8px">Ingredients</h4>
+        <ul class="ing">
+          <li>4 roma tomatoes</li>
+          <li>2–4 serrano chiles (jalapeño for milder)</li>
+          <li>2 garlic cloves</li>
+          <li>¼ onion (optional)</li>
+          <li>Small handful of cilantro</li>
+          <li>Salt to taste</li>
+        </ul>
+        <h4 style="font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep);font-weight:800;margin:6px 0 10px">Method</h4>
+        <ol class="steps">
+          <li>Char tomatoes, serranos, garlic (and onion) on a comal or grill until blistered and soft.</li>
+          <li>Blend — or grind in a molcajete — with cilantro and salt to a coarse texture.</li>
+          <li>Adjust salt and spoon over carne asada and tacos.</li>
+        </ol>
+        <div class="callout"><b>Storage:</b> refrigerated, up to 5 days. The char is what makes it — don't skip blistering the skins.</div>
+      </article>
+    </div>
+
+    <div class="variations reveal">
+      <div class="var"><b>Chiltepín molido</b><span>Just crushed dried chiltepín, sprinkled straight onto caldos — menudo, pozole, gallina pinta.</span></div>
+      <div class="var"><b>Pico de gallo</b><span>Raw diced tomato, onion, serrano, cilantro, lime &amp; salt — the fresh option for tacos.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPES -->
+<section id="recetas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Las Recetas</span>
+      <h2>What Sonora does best</h2>
+      <p>Five signature dishes — from the weekend grill to the dessert that closes it out. Tap a dish to open its recipe. Measurements are imperial; allergens are flagged.</p>
+    </div>
+
+    <div class="tabs reveal" role="tablist" aria-label="Sonoran recipes">
+      <button class="r-tab active" role="tab" aria-selected="true" data-target="r-asada"><span class="n">1</span>Carne Asada</button>
+      <button class="r-tab" role="tab" aria-selected="false" data-target="r-machaca"><span class="n">2</span>Machaca con Huevo</button>
+      <button class="r-tab" role="tab" aria-selected="false" data-target="r-chimi"><span class="n">3</span>Chimichanga</button>
+      <button class="r-tab" role="tab" aria-selected="false" data-target="r-caldo"><span class="n">4</span>Caldo de Queso</button>
+      <button class="r-tab" role="tab" aria-selected="false" data-target="r-coyotas"><span class="n">5</span>Coyotas</button>
+    </div>
+
+    <div class="reveal">
+      <!-- 1 CARNE ASADA -->
+      <div class="recipe-panel active" id="r-asada" role="tabpanel">
+        <div class="recipe">
+          <div class="recipe-hd">
+            <span class="rk">No. 1 · The centerpiece</span>
+            <h3>Carne Asada, Estilo Sonora</h3>
+            <p>The cultural heart of the state — a weekend ritual built on top-quality beef and mesquite smoke. The approach is famously minimalist: with good meat, salt is often the only seasoning.</p>
+            <div class="meta">
+              <div class="m"><span class="lbl">Serves</span><span class="val">4–6</span></div>
+              <div class="m"><span class="lbl">Dish heat</span><span class="heat val" data-level="1" data-label="Mild"></span></div>
+              <div class="m"><span class="lbl">Contains</span><span class="allerg"><span>Gluten</span></span></div>
+            </div>
+          </div>
+          <div class="recipe-body">
+            <div class="col-ing">
+              <h4>For the grill</h4>
+              <ul class="ing">
+                <li>2 lb thin-cut beef — ribeye, top sirloin, NY strip, or arrachera (skirt/flank)</li>
+                <li>Coarse kosher or sea salt (essential — often the only seasoning)</li>
+                <li>Black pepper (optional)</li>
+              </ul>
+              <h4>Optional norteño marinade</h4>
+              <ul class="ing">
+                <li>Juice of 2–3 limes (or 1 sour orange)</li>
+                <li>2–3 garlic cloves, minced</li>
+                <li>¼ cup light beer</li>
+                <li>1 tbsp Worcestershire (salsa inglesa)</li>
+              </ul>
+            </div>
+            <div class="col-steps">
+              <h4>Method</h4>
+              <ol class="steps">
+                <li>Bring the meat to room temperature. Salt generously just before grilling.</li>
+                <li>Build a mesquite fire (or charcoal with a chunk of mesquite or oak). Wait until the flames die down to glowing coals — you cook on the heat, not the flame.</li>
+                <li>Grill over high heat, flipping <strong>only once</strong>, to medium. Don't overcook.</li>
+                <li>Rest a few minutes, then slice or chop.</li>
+                <li>If marinating: coat the meat, refrigerate 1–2 hrs (up to overnight), drain, then salt and grill as above.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="recipe-note"><b>Serve with:</b> warm flour tortillas, salsa asada, grilled spring onions (cebollitas), guacamole, lime and beans. With top-quality beef, salt + mesquite smoke is the entire point — resist over-seasoning.</div>
+        </div>
+      </div>
+
+      <!-- 2 MACHACA -->
+      <div class="recipe-panel" id="r-machaca" role="tabpanel">
+        <div class="recipe">
+          <div class="recipe-hd">
+            <span class="rk">No. 2 · The breakfast</span>
+            <h3>Machaca con Huevo</h3>
+            <p>The quintessential Sonoran breakfast — dried, shredded beef scrambled with eggs. The drying-and-pounding technique was developed by desert peoples to preserve beef in extreme heat, then carried by 19th-century vaqueros as portable food.</p>
+            <div class="meta">
+              <div class="m"><span class="lbl">Serves</span><span class="val">4</span></div>
+              <div class="m"><span class="lbl">Dish heat</span><span class="heat val" data-level="2" data-label="Light"></span></div>
+              <div class="m"><span class="lbl">Contains</span><span class="allerg"><span>Egg</span><span>Gluten</span></span></div>
+            </div>
+          </div>
+          <div class="recipe-body">
+            <div class="col-ing">
+              <h4>Ingredients</h4>
+              <ul class="ing">
+                <li>8 oz machaca / dried shredded beef (≈1½ cups)</li>
+                <li>4 large eggs, lightly beaten</li>
+                <li>½ medium white onion, finely chopped</li>
+                <li>1 garlic clove, minced</li>
+                <li>2 small tomatoes, diced</li>
+                <li>1–2 serrano chiles, finely chopped (optional)</li>
+                <li>1–2 tbsp vegetable oil</li>
+                <li>Salt to taste — add cautiously; machaca is already salty</li>
+              </ul>
+            </div>
+            <div class="col-steps">
+              <h4>Method</h4>
+              <ol class="steps">
+                <li>If using packaged dry machaca, shred it fine. If very dry, soak 5 minutes in warm water and drain well.</li>
+                <li>Heat oil over medium-high. Sauté onion and garlic ~2 minutes until translucent.</li>
+                <li>Add the machaca; cook 3–4 minutes until lightly browned and aromatic.</li>
+                <li>Add tomato and serrano; cook 2–3 minutes until the tomato softens.</li>
+                <li>Pour in the beaten eggs and stir gently until just set — don't let it dry out.</li>
+                <li>Taste, and add salt only if needed.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="recipe-note"><b>Serve with:</b> warm flour tortillas burrito-style, refried beans and red salsa. <b>Low-sodium tip:</b> rinse the machaca briefly and skip added salt entirely.</div>
+        </div>
+      </div>
+
+      <!-- 3 CHIMICHANGA -->
+      <div class="recipe-panel" id="r-chimi" role="tabpanel">
+        <div class="recipe">
+          <div class="recipe-hd">
+            <span class="rk">No. 3 · The regional pride</span>
+            <h3>Chimichanga</h3>
+            <p>A fried burrito invented in Sonora in the 1950s. A large flour tortilla is stuffed, folded into a rectangular packet, and fried until golden and crisp.</p>
+            <div class="meta">
+              <div class="m"><span class="lbl">Makes</span><span class="val">4</span></div>
+              <div class="m"><span class="lbl">Dish heat</span><span class="heat val" data-level="2" data-label="Light"></span></div>
+              <div class="m"><span class="lbl">Contains</span><span class="allerg"><span>Gluten</span><span>Dairy</span></span></div>
+            </div>
+          </div>
+          <div class="recipe-body">
+            <div class="col-ing">
+              <h4>Filling</h4>
+              <ul class="ing">
+                <li>1 lb beef chuck or flank, cooked &amp; shredded (leftover beef or machaca works)</li>
+                <li>1 tbsp oil</li>
+                <li>¼ onion, chopped; 1 garlic clove; 1 small tomato; 1 chile (serrano/Anaheim)</li>
+                <li>Salt &amp; pepper to taste</li>
+              </ul>
+              <h4>Assembly</h4>
+              <ul class="ing">
+                <li>4 large flour tortillas (burrito size)</li>
+                <li>1 cup refried beans (optional)</li>
+                <li>1 cup shredded cheese — Chihuahua, Monterey Jack, or queso</li>
+                <li>Oil for frying</li>
+                <li>Toppings: shredded lettuce, salsa, crumbled queso, crema, guacamole</li>
+              </ul>
+            </div>
+            <div class="col-steps">
+              <h4>Method</h4>
+              <ol class="steps">
+                <li>Sauté onion, garlic, tomato and chile; add the shredded beef, season, and warm through.</li>
+                <li>Warm the tortillas so they fold without cracking.</li>
+                <li>Spread beans down the center, add beef and cheese, then fold into a sealed rectangular packet (fold the sides in, then roll). A toothpick holds the seam.</li>
+                <li>Fry in ~1 inch of hot oil (350°F / 175°C), seam-side down first, turning, until golden and crisp — 2–3 minutes. Drain.</li>
+                <li>Top with lettuce, salsa, cheese and crema. Serve immediately.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="recipe-note"><b>Lighter option:</b> brush with oil and bake at 425°F (220°C) until golden instead of frying.</div>
+        </div>
+      </div>
+
+      <!-- 4 CALDO DE QUESO -->
+      <div class="recipe-panel" id="r-caldo" role="tabpanel">
+        <div class="recipe">
+          <div class="recipe-hd">
+            <span class="rk">No. 4 · The everyday comfort</span>
+            <h3>Caldo de Queso</h3>
+            <p>A humble, beloved Hermosillo soup — potatoes, roasted green chile and fresh cheese in a light tomato-and-onion broth. The dish that most often repeats on Sonoran home tables, and named by Taste Atlas among the world's best soups.</p>
+            <div class="meta">
+              <div class="m"><span class="lbl">Serves</span><span class="val">6</span></div>
+              <div class="m"><span class="lbl">Dish heat</span><span class="heat val" data-level="1" data-label="Mild"></span></div>
+              <div class="m"><span class="lbl">Contains</span><span class="allerg"><span>Dairy</span></span></div>
+            </div>
+          </div>
+          <div class="recipe-body">
+            <div class="col-ing">
+              <h4>Ingredients</h4>
+              <ul class="ing">
+                <li>1½ lb (680 g) potatoes, peeled, ½-inch cubes</li>
+                <li>4–6 Anaheim / California green chiles, roasted, peeled, seeded, sliced</li>
+                <li>2 small tomatoes (~1 cup), diced</li>
+                <li>⅓ cup white onion, finely chopped</li>
+                <li>1 garlic clove, minced</li>
+                <li>6–7 cups chicken or vegetable broth (to cover potatoes by ~1 in)</li>
+                <li>½ cup (120 ml) whole milk</li>
+                <li>1 tsp Mexican oregano (up to 1 tbsp)</li>
+                <li>1–2 tbsp oil</li>
+                <li>8 oz (225 g) queso fresco, ranchero or cotija, ½-inch cubes</li>
+                <li>Salt &amp; pepper to taste</li>
+                <li>To serve: crushed chiltepín, flour tortillas, avocado</li>
+              </ul>
+            </div>
+            <div class="col-steps">
+              <h4>Method</h4>
+              <ol class="steps">
+                <li>Roast the chiles until blistered, steam in a covered bowl 10–15 min, then peel, seed and slice.</li>
+                <li>Sauté onion, garlic and tomato in the oil to form a light sofrito.</li>
+                <li>Add the broth and bring to a boil. Add potatoes; simmer 15–20 min until tender but holding shape.</li>
+                <li>Stir in the chile strips and oregano; lower the heat.</li>
+                <li><strong>Add the milk slowly, below a rolling boil</strong> — adding milk to boiling broth will curdle it.</li>
+                <li>Adjust salt and pepper. Off the heat, add the cheese cubes; let sit 1–2 min to soften without fully melting.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="recipe-note"><b>Finish each bowl with crushed chiltepín.</b> Low-sodium tip: use unsalted homemade broth, skip the bouillon, and let the cheese provide the savor. Vegetarian as written with vegetable broth.</div>
+        </div>
+      </div>
+
+      <!-- 5 COYOTAS -->
+      <div class="recipe-panel" id="r-coyotas" role="tabpanel">
+        <div class="recipe">
+          <div class="recipe-hd">
+            <span class="rk">No. 5 · The sweet finish</span>
+            <h3>Coyotas</h3>
+            <p>Sonora's signature dessert — a flat, golden, lightly sweet wheat pastry filled with piloncillo. It originated in Villa de Seris, Hermosillo, where the Ochoa family began selling them formally in 1953; the name nods to the coyote-gold color they take on as they bake.</p>
+            <div class="meta">
+              <div class="m"><span class="lbl">Makes</span><span class="val">12–14</span></div>
+              <div class="m"><span class="lbl">Dish heat</span><span class="heat val" data-level="0" data-label="None"></span></div>
+              <div class="m"><span class="lbl">Contains</span><span class="allerg"><span>Gluten</span><span>Egg</span></span></div>
+            </div>
+          </div>
+          <div class="recipe-body">
+            <div class="col-ing">
+              <h4>Dough</h4>
+              <ul class="ing">
+                <li>4 cups (500 g) all-purpose flour</li>
+                <li>1 cup (225 g) vegetable shortening or lard, room temp</li>
+                <li>½ tbsp baking powder</li>
+                <li>½ tsp salt</li>
+                <li>Syrup: ¾ cup grated piloncillo (150 g) + ½ cup (120 ml) water</li>
+              </ul>
+              <h4>Filling &amp; finish</h4>
+              <ul class="ing">
+                <li>¾ cup grated piloncillo (150 g) + 1 tbsp flour</li>
+                <li>1 egg (or egg white), beaten, for brushing</li>
+                <li>Granulated sugar, for sprinkling</li>
+              </ul>
+            </div>
+            <div class="col-steps">
+              <h4>Method</h4>
+              <ol class="steps">
+                <li><strong>Syrup:</strong> dissolve 150 g piloncillo in ½ cup water over low heat; reduce ~5 min to a light syrup; cool completely.</li>
+                <li><strong>Filling:</strong> toss 150 g piloncillo with 1 tbsp flour.</li>
+                <li><strong>Dough:</strong> combine flour, baking powder, salt; cut in shortening to a sandy texture (3–5 min). Add cooled syrup; work ~10 min to a smooth dough that pulls from your hands. Rest 30 min.</li>
+                <li>Roll to ~¼ inch (5 mm); cut ~4-inch discs.</li>
+                <li>Place ~1 tbsp filling in the center of half the discs. Brush edges with egg, top with a second disc, and seal the rim with a fork.</li>
+                <li>Brush tops with egg, sprinkle sugar, and <strong>prick the center once with a fork</strong> (keeps them from puffing). Rest 30 min.</li>
+                <li>Bake at 350°F (175°C) for 18–22 min, until evenly golden. Cool.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="recipe-note"><b>Serve with:</b> the close of a carne asada, or alongside coffee — the piloncillo center means you don't need to sweeten your cup. Keep well-wrapped 5–7 days. Variations fill with cajeta, guava or quince.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section id="notas">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:30px">
+      <span class="eyebrow">Notas</span>
+      <h2>Sourcing, storage &amp; a word on sources</h2>
+    </div>
+    <div class="notes-grid">
+      <div class="nbox reveal">
+        <h4>Sourcing &amp; storage</h4>
+        <ul>
+          <li><b>Chiltepín</b> — dried, at Mexican grocers &amp; online; expensive because it's wild-harvested. A little goes a long way; store airtight, away from light.</li>
+          <li><b>Piloncillo</b> — hard cones (one ≈ 8 oz / 225 g) or pre-grated. Microwave a few seconds to soften before chopping; dark brown sugar substitutes in a pinch.</li>
+          <li><b>Machaca / carne seca</b> — Mexican markets &amp; online; a brief warm-water soak revives bone-dry beef.</li>
+          <li><b>Mexican oregano</b> — more citrusy and robust than Mediterranean oregano; worth seeking out.</li>
+          <li><b>General</b> — whole dried spices keep ~1 year; ground spices &amp; blends are best within 6 months. Airtight jars, cool and dark.</li>
+        </ul>
+      </div>
+      <div class="nbox reveal">
+        <h4>On sources</h4>
+        <p class="about">Recipes and seasoning profiles were assembled from Spanish-language regional and culinary sources — Sonoran outlets (El Sol de Hermosillo, Expreso, Visita Sonora, NORO), recipe sites (Cocina Delirante, El Universal, Animal Gourmet, Larousse Cocina, México en mi Cocina), and Baja / Baja Med references (San Diego Red, Club Valle de Guadalupe, Excélsior, POSTA) — and translated into English.</p>
+        <p class="about" style="margin-top:14px">Where a dish's origin is disputed — machaca, for instance, is also claimed by Chihuahua and Nuevo León — it's noted as such. Measurements have been converted from metric to imperial throughout.</p>
+      </div>
+    </div>
+    <footer>
+      <div class="f-mark"><svg viewBox="0 0 24 24"><use href="#ic-sun"/></svg></div>
+      <p class="tag-line">Hecho con sol y mezquite.</p>
+      <p>Sazón del Desierto · A guide to the cooking of Sonora &amp; Baja California</p>
+    </footer>
+  </div>
+</section>
+
+<script>
+  // Build chile heat meters
+  document.querySelectorAll('.heat').forEach(function(el){
+    var lvl = parseInt(el.dataset.level || '0', 10), max = 5, html = '';
+    for (var i = 1; i <= max; i++){
+      html += '<svg class="chl' + (i <= lvl ? '' : ' off') + '" viewBox="0 0 24 24"><use href="#ic-chile"/></svg>';
+    }
+    if (el.dataset.label){ html += '<span class="heat-num">' + el.dataset.label + '</span>'; }
+    el.innerHTML = html;
+  });
+
+  // Recipe tabs
+  var tabs = document.querySelectorAll('.r-tab');
+  var panels = document.querySelectorAll('.recipe-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      var target = document.getElementById(tab.dataset.target);
+      if (target){ target.classList.add('active'); }
+    });
+  });
+
+  // Scroll reveal
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
