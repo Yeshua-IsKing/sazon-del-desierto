@@ -106,8 +106,12 @@
   .hero .lead{font-size:1.16rem;max-width:34ch;margin-top:22px;color:var(--ink-soft)}
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
   .chip{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-    background:var(--cream);border:1px solid var(--line);color:var(--clay-deep);padding:8px 14px;border-radius:999px;box-shadow:var(--sh-sm)}
-  .chip svg{width:14px;height:14px;color:var(--chile)}
+    background:var(--cream);border:1px solid var(--line);color:var(--clay-deep);padding:8px 14px;border-radius:999px;box-shadow:var(--sh-sm);
+    cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s,color .25s}
+  .chip:hover{transform:translateY(-3px);border-color:var(--clay);color:var(--chile);box-shadow:var(--sh-md)}
+  .chip:focus-visible{outline:2px solid var(--chile);outline-offset:3px}
+  .chip svg{width:14px;height:14px;color:var(--chile);transition:transform .25s}
+  .chip:hover svg{transform:scale(1.12)}
 
   .hero-card{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--sh-md);position:relative}
   .hero-card h3{font-size:1.05rem;color:var(--clay-deep);font-style:italic;font-weight:600;margin-bottom:14px}
@@ -126,7 +130,7 @@
   @keyframes fadeUp{to{opacity:1;transform:none}}
 
   /* ---------- SECTIONS ---------- */
-  section{padding:84px 0}
+  section{padding:84px 0;scroll-margin-top:80px}
   .sec-head{max-width:62ch;margin-bottom:46px}
   .sec-head h2{font-size:clamp(2.1rem,5vw,3.3rem);margin:.1em 0 .35em}
   .sec-head p{font-size:1.08rem}
@@ -320,9 +324,9 @@
         <h1 class="fade-up d2">Sazón del<em>Desierto</em></h1>
         <p class="lead fade-up d3">A field guide to the seasonings, salsas, and signature dishes of <strong>Sonora</strong> &amp; <strong>Baja California</strong> — where mesquite smoke, wild chiltepín, and sun-bleached simplicity define the table.</p>
         <div class="chips fade-up d4">
-          <span class="chip"><svg><use href="#ic-sun"/></svg>Seasoning profiles</span>
-          <span class="chip"><svg><use href="#ic-chile"/></svg>The salsas</span>
-          <span class="chip"><svg><use href="#ic-flame"/></svg>5 signature recipes</span>
+          <a class="chip" href="#sazones"><svg><use href="#ic-sun"/></svg>Seasoning profiles</a>
+          <a class="chip" href="#salsas"><svg><use href="#ic-chile"/></svg>The salsas</a>
+          <a class="chip" href="#recetas"><svg><use href="#ic-flame"/></svg>5 signature recipes</a>
         </div>
       </div>
       <aside class="hero-card fade-up d5" aria-label="At a glance">
